@@ -1,14 +1,5 @@
 
 
-
-class ItemFilter extends React.Component {
-  render() {
-      return (
-          <div>This is a placeholder for the item filter.</div>
-      );
-  }
-}
-
 function ItemTable(props) {    
 
   const itemRows = props.items.map(item =>
@@ -19,13 +10,10 @@ function ItemTable(props) {
       <table className="bordered-table">
           <thead>
               <tr>
-                  <th>ID</th>
-                  <th>productName</th>
-                  <th>price</th>
-                  {/* <th>Created</th> */}
-                  <th>category</th>
-                  {/* <th>Due Date</th> */}
-                  <th>image</th>
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>Category</th>
+                  <th>Image</th>
               </tr>
           </thead>
           <tbody>
@@ -62,11 +50,30 @@ class ItemAdd extends React.Component {
   render() {
       return (
           <form name="itemAdd" onSubmit={this.handleSubmit}>
-              <input type="text" name="productName" placeholder="productName" />
-              <input type="text" name="price" placeholder="price" />
-              <input type="text" name="category" placeholder="category" />
-              <input type="text" name="image" placeholder="image" />
-              <button>Add</button>
+              <label for="category">Category</label>
+              <br />
+              <select name="category" >
+                <option value="Shirts">Shirts</option>
+                <option value="Jeans">Jeans</option>
+                <option value="Jackets">Jackets</option>
+                <option value="Sweaters">Sweaters</option>
+                <option value="Accessories">Accessories</option>
+              </select>
+              <br />
+              <label for="productName">Product Name</label>
+              <br />
+              <input type="text" name="productName" />
+              <br />
+              <label for="price">Price Per Unit</label>
+              <br />
+              <input type="text" name="price" />
+              <br />
+              <label for="image">Image URL</label>
+              <br />
+              <input type="text" name="image" />
+              <br />
+              <button>Add Product</button>
+              <br />
           </form>
       );
   }
@@ -97,10 +104,13 @@ class ItemList extends React.Component {
       return (
           <React.Fragment>
               <h1>My Company Inventory</h1>
-              <ItemFilter />
+              {/* <ItemFilter /> */}
+              Showing all available products
               <hr />
               <ItemTable items={this.state.items} />
-              <hr />
+              <br />
+              Add a new product to inventory
+              <hr />              
               <ItemAdd createItem={this.createItem} />
           </React.Fragment>
       );
@@ -113,12 +123,14 @@ function ItemRow(props) {
 
   return (
       <tr>
-          <td>{item.id}</td>
+          {/* <td>{item.id}</td> */}
           <td>{item.productName}</td>
           <td>{item.price}</td>
 
           <td>{item.category}</td>
-          <td>{item.image}</td>
+          <td>
+            <a href={item.image} target="_blank">View</a>
+          </td>
       </tr>
   );
 }

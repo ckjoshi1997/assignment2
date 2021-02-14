@@ -22,27 +22,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var ItemFilter = /*#__PURE__*/function (_React$Component) {
-  _inherits(ItemFilter, _React$Component);
-
-  var _super = _createSuper(ItemFilter);
-
-  function ItemFilter() {
-    _classCallCheck(this, ItemFilter);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(ItemFilter, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, "This is a placeholder for the item filter.");
-    }
-  }]);
-
-  return ItemFilter;
-}(React.Component);
-
 function ItemTable(props) {
   var itemRows = props.items.map(function (item) {
     return /*#__PURE__*/React.createElement(ItemRow, {
@@ -52,20 +31,20 @@ function ItemTable(props) {
   });
   return /*#__PURE__*/React.createElement("table", {
     className: "bordered-table"
-  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "ID"), /*#__PURE__*/React.createElement("th", null, "productName"), /*#__PURE__*/React.createElement("th", null, "price"), /*#__PURE__*/React.createElement("th", null, "category"), /*#__PURE__*/React.createElement("th", null, "image"))), /*#__PURE__*/React.createElement("tbody", null, itemRows));
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Product Name"), /*#__PURE__*/React.createElement("th", null, "Price"), /*#__PURE__*/React.createElement("th", null, "Category"), /*#__PURE__*/React.createElement("th", null, "Image"))), /*#__PURE__*/React.createElement("tbody", null, itemRows));
 }
 
-var ItemAdd = /*#__PURE__*/function (_React$Component2) {
-  _inherits(ItemAdd, _React$Component2);
+var ItemAdd = /*#__PURE__*/function (_React$Component) {
+  _inherits(ItemAdd, _React$Component);
 
-  var _super2 = _createSuper(ItemAdd);
+  var _super = _createSuper(ItemAdd);
 
   function ItemAdd() {
     var _this;
 
     _classCallCheck(this, ItemAdd);
 
-    _this = _super2.call(this);
+    _this = _super.call(this);
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -93,40 +72,53 @@ var ItemAdd = /*#__PURE__*/function (_React$Component2) {
       return /*#__PURE__*/React.createElement("form", {
         name: "itemAdd",
         onSubmit: this.handleSubmit
-      }, /*#__PURE__*/React.createElement("input", {
+      }, /*#__PURE__*/React.createElement("label", {
+        for: "category"
+      }, "Category"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("select", {
+        name: "category"
+      }, /*#__PURE__*/React.createElement("option", {
+        value: "Shirts"
+      }, "Shirts"), /*#__PURE__*/React.createElement("option", {
+        value: "Jeans"
+      }, "Jeans"), /*#__PURE__*/React.createElement("option", {
+        value: "Jackets"
+      }, "Jackets"), /*#__PURE__*/React.createElement("option", {
+        value: "Sweaters"
+      }, "Sweaters"), /*#__PURE__*/React.createElement("option", {
+        value: "Accessories"
+      }, "Accessories")), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", {
+        for: "productName"
+      }, "Product Name"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
         type: "text",
-        name: "productName",
-        placeholder: "productName"
-      }), /*#__PURE__*/React.createElement("input", {
+        name: "productName"
+      }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", {
+        for: "price"
+      }, "Price Per Unit"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
         type: "text",
-        name: "price",
-        placeholder: "price"
-      }), /*#__PURE__*/React.createElement("input", {
+        name: "price"
+      }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", {
+        for: "image"
+      }, "Image URL"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
         type: "text",
-        name: "category",
-        placeholder: "category"
-      }), /*#__PURE__*/React.createElement("input", {
-        type: "text",
-        name: "image",
-        placeholder: "image"
-      }), /*#__PURE__*/React.createElement("button", null, "Add"));
+        name: "image"
+      }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("button", null, "Add Product"), /*#__PURE__*/React.createElement("br", null));
     }
   }]);
 
   return ItemAdd;
 }(React.Component);
 
-var ItemList = /*#__PURE__*/function (_React$Component3) {
-  _inherits(ItemList, _React$Component3);
+var ItemList = /*#__PURE__*/function (_React$Component2) {
+  _inherits(ItemList, _React$Component2);
 
-  var _super3 = _createSuper(ItemList);
+  var _super2 = _createSuper(ItemList);
 
   function ItemList() {
     var _this2;
 
     _classCallCheck(this, ItemList);
 
-    _this2 = _super3.call(this);
+    _this2 = _super2.call(this);
     _this2.state = {
       items: []
     };
@@ -163,9 +155,9 @@ var ItemList = /*#__PURE__*/function (_React$Component3) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "My Company Inventory"), /*#__PURE__*/React.createElement(ItemFilter, null), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ItemTable, {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "My Company Inventory"), "Showing all available products", /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ItemTable, {
         items: this.state.items
-      }), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ItemAdd, {
+      }), /*#__PURE__*/React.createElement("br", null), "Add a new product to inventory", /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ItemAdd, {
         createItem: this.createItem
       }));
     }
@@ -176,18 +168,21 @@ var ItemList = /*#__PURE__*/function (_React$Component3) {
 
 function ItemRow(props) {
   var item = props.item;
-  return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, item.id), /*#__PURE__*/React.createElement("td", null, item.productName), /*#__PURE__*/React.createElement("td", null, item.price), /*#__PURE__*/React.createElement("td", null, item.category), /*#__PURE__*/React.createElement("td", null, item.image));
+  return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, item.productName), /*#__PURE__*/React.createElement("td", null, item.price), /*#__PURE__*/React.createElement("td", null, item.category), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("a", {
+    href: item.image,
+    target: "_blank"
+  }, "View")));
 }
 
-var BorderWrap = /*#__PURE__*/function (_React$Component4) {
-  _inherits(BorderWrap, _React$Component4);
+var BorderWrap = /*#__PURE__*/function (_React$Component3) {
+  _inherits(BorderWrap, _React$Component3);
 
-  var _super4 = _createSuper(BorderWrap);
+  var _super3 = _createSuper(BorderWrap);
 
   function BorderWrap() {
     _classCallCheck(this, BorderWrap);
 
-    return _super4.apply(this, arguments);
+    return _super3.apply(this, arguments);
   }
 
   _createClass(BorderWrap, [{
