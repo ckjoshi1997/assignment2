@@ -74,7 +74,7 @@ var ItemAdd = /*#__PURE__*/function (_React$Component) {
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/React.createElement("label", {
         for: "category"
-      }, "Category"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("select", {
+      }, "Category", /*#__PURE__*/React.createElement("select", {
         name: "category"
       }, /*#__PURE__*/React.createElement("option", {
         value: "Shirts"
@@ -86,22 +86,22 @@ var ItemAdd = /*#__PURE__*/function (_React$Component) {
         value: "Sweaters"
       }, "Sweaters"), /*#__PURE__*/React.createElement("option", {
         value: "Accessories"
-      }, "Accessories")), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", {
-        for: "productName"
-      }, "Product Name"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
-        type: "text",
-        name: "productName"
-      }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", {
+      }, "Accessories"))), /*#__PURE__*/React.createElement("label", {
         for: "price"
-      }, "Price Per Unit"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+      }, "Price Per Unit", /*#__PURE__*/React.createElement("input", {
         type: "text",
         name: "price"
-      }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", {
+      })), /*#__PURE__*/React.createElement("label", {
+        for: "productName"
+      }, "Product Name", /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        name: "productName"
+      })), /*#__PURE__*/React.createElement("label", {
         for: "image"
-      }, "Image URL"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+      }, "Image URL", /*#__PURE__*/React.createElement("input", {
         type: "text",
         name: "image"
-      }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("button", null, "Add Product"), /*#__PURE__*/React.createElement("br", null));
+      })), /*#__PURE__*/React.createElement("button", null, "Add Product"));
     }
   }]);
 
@@ -201,6 +201,5 @@ var BorderWrap = /*#__PURE__*/function (_React$Component3) {
   return BorderWrap;
 }(React.Component);
 
-var initialItems = [];
 var element = /*#__PURE__*/React.createElement(ItemList, null);
 ReactDOM.render(element, document.getElementById('contents'));

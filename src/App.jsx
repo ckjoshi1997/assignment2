@@ -50,30 +50,33 @@ class ItemAdd extends React.Component {
   render() {
       return (
           <form name="itemAdd" onSubmit={this.handleSubmit}>
-              <label for="category">Category</label>
-              <br />
-              <select name="category" >
-                <option value="Shirts">Shirts</option>
-                <option value="Jeans">Jeans</option>
-                <option value="Jackets">Jackets</option>
-                <option value="Sweaters">Sweaters</option>
-                <option value="Accessories">Accessories</option>
-              </select>
-              <br />
-              <label for="productName">Product Name</label>
-              <br />
-              <input type="text" name="productName" />
-              <br />
-              <label for="price">Price Per Unit</label>
-              <br />
-              <input type="text" name="price" />
-              <br />
-              <label for="image">Image URL</label>
-              <br />
-              <input type="text" name="image" />
-              <br />
+              <label for="category">
+                Category
+                <select name="category" >
+                  <option value="Shirts">Shirts</option>
+                  <option value="Jeans">Jeans</option>
+                  <option value="Jackets">Jackets</option>
+                  <option value="Sweaters">Sweaters</option>
+                  <option value="Accessories">Accessories</option>
+                </select>
+              </label>
+
+              <label for="price">
+                Price Per Unit
+                <input type="text" name="price" />
+                </label>
+
+              <label for="productName">
+                Product Name
+                <input type="text" name="productName" />
+              </label>
+              
+              <label for="image">
+                Image URL
+                <input type="text" name="image" />
+                </label>
+              
               <button>Add Product</button>
-              <br />
           </form>
       );
   }
@@ -104,7 +107,6 @@ class ItemList extends React.Component {
       return (
           <React.Fragment>
               <h1>My Company Inventory</h1>
-              {/* <ItemFilter /> */}
               Showing all available products
               <hr />
               <ItemTable items={this.state.items} />
@@ -145,9 +147,6 @@ class BorderWrap extends React.Component {
       );
   }
 }
-
-const initialItems = [];
-
 
 
 const element = <ItemList />;
