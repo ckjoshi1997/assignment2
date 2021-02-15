@@ -36,13 +36,13 @@ class ItemAdd extends React.Component {
       const form = document.forms.itemAdd;
       const item = {
           productName: form.productName.value,
-          price: form.price.value,
+          price: form.price.value.slice(1),
           category: form.category.value, 
           image: form.image.value, 
       }
       this.props.createItem(item);
       form.productName.value = "";
-      form.price.value = "";
+      form.price.value = "$";
       form.category.value = "";
       form.image.value = "";
   }
@@ -63,7 +63,7 @@ class ItemAdd extends React.Component {
 
               <label for="price">
                 Price Per Unit
-                <input type="text" name="price" />
+                <input type="text" name="price" defaultValue="$" />
                 </label>
 
               <label for="productName">
@@ -127,7 +127,7 @@ function ItemRow(props) {
       <tr>
           {/* <td>{item.id}</td> */}
           <td>{item.productName}</td>
-          <td>{item.price}</td>
+          <td>{"$" + item.price}</td>
 
           <td>{item.category}</td>
           <td>

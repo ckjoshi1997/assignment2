@@ -56,13 +56,13 @@ var ItemAdd = /*#__PURE__*/function (_React$Component) {
       var form = document.forms.itemAdd;
       var item = {
         productName: form.productName.value,
-        price: form.price.value,
+        price: form.price.value.slice(1),
         category: form.category.value,
         image: form.image.value
       };
       this.props.createItem(item);
       form.productName.value = "";
-      form.price.value = "";
+      form.price.value = "$";
       form.category.value = "";
       form.image.value = "";
     }
@@ -90,7 +90,8 @@ var ItemAdd = /*#__PURE__*/function (_React$Component) {
         for: "price"
       }, "Price Per Unit", /*#__PURE__*/React.createElement("input", {
         type: "text",
-        name: "price"
+        name: "price",
+        defaultValue: "$"
       })), /*#__PURE__*/React.createElement("label", {
         for: "productName"
       }, "Product Name", /*#__PURE__*/React.createElement("input", {
@@ -168,7 +169,7 @@ var ItemList = /*#__PURE__*/function (_React$Component2) {
 
 function ItemRow(props) {
   var item = props.item;
-  return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, item.productName), /*#__PURE__*/React.createElement("td", null, item.price), /*#__PURE__*/React.createElement("td", null, item.category), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("a", {
+  return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, item.productName), /*#__PURE__*/React.createElement("td", null, "$" + item.price), /*#__PURE__*/React.createElement("td", null, item.category), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("a", {
     href: item.image,
     target: "_blank"
   }, "View")));
