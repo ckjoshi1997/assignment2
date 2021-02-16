@@ -46,6 +46,9 @@ var ItemAdd = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this);
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.state = {
+      price: ''
+    };
     return _this;
   }
 
@@ -56,19 +59,23 @@ var ItemAdd = /*#__PURE__*/function (_React$Component) {
       var form = document.forms.itemAdd;
       var item = {
         productName: form.productName.value,
-        price: form.price.value.slice(1),
+        price: this.state.price,
         category: form.category.value,
         image: form.image.value
       };
       this.props.createItem(item);
       form.productName.value = "";
-      form.price.value = "$";
+      this.setState({
+        price: ''
+      });
       form.category.value = "";
       form.image.value = "";
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return /*#__PURE__*/React.createElement("form", {
         name: "itemAdd",
         onSubmit: this.handleSubmit
@@ -91,7 +98,14 @@ var ItemAdd = /*#__PURE__*/function (_React$Component) {
       }, "Price Per Unit", /*#__PURE__*/React.createElement("input", {
         type: "text",
         name: "price",
-        defaultValue: "$"
+        value: "$".concat(this.state.price),
+        onChange: function onChange(e) {
+          var newValue = e.target.value.split('$')[1] || "";
+
+          _this2.setState({
+            price: newValue
+          });
+        }
       })), /*#__PURE__*/React.createElement("label", {
         for: "productName"
       }, "Product Name", /*#__PURE__*/React.createElement("input", {
@@ -115,16 +129,16 @@ var ItemList = /*#__PURE__*/function (_React$Component2) {
   var _super2 = _createSuper(ItemList);
 
   function ItemList() {
-    var _this2;
+    var _this3;
 
     _classCallCheck(this, ItemList);
 
-    _this2 = _super2.call(this);
-    _this2.state = {
+    _this3 = _super2.call(this);
+    _this3.state = {
       items: []
     };
-    _this2.createItem = _this2.createItem.bind(_assertThisInitialized(_this2));
-    return _this2;
+    _this3.createItem = _this3.createItem.bind(_assertThisInitialized(_this3));
+    return _this3;
   }
 
   _createClass(ItemList, [{
@@ -135,10 +149,10 @@ var ItemList = /*#__PURE__*/function (_React$Component2) {
   }, {
     key: "loadData",
     value: function loadData() {
-      var _this3 = this;
+      var _this4 = this;
 
       setTimeout(function () {
-        _this3.setState({
+        _this4.setState({
           items: initialItems
         });
       }, 500);

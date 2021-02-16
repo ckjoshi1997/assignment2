@@ -29,6 +29,7 @@ class ItemAdd extends React.Component {
   constructor() {
       super();
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.state = { price: ''};
   }
 
   handleSubmit(e) {
@@ -36,13 +37,13 @@ class ItemAdd extends React.Component {
       const form = document.forms.itemAdd;
       const item = {
           productName: form.productName.value,
-          price: form.price.value.slice(1),
+          price: this.state.price,
           category: form.category.value, 
           image: form.image.value, 
       }
       this.props.createItem(item);
       form.productName.value = "";
-      form.price.value = "$";
+      this.setState({price: ''});
       form.category.value = "";
       form.image.value = "";
   }
@@ -63,7 +64,10 @@ class ItemAdd extends React.Component {
 
               <label for="price">
                 Price Per Unit
-                <input type="text" name="price" defaultValue="$" />
+                <input type="text" name="price" value={`$${this.state.price}`} onChange={e => {
+                    const newValue = e.target.value.split('$')[1] || "";
+                    this.setState({ price: newValue });
+                }} />
                 </label>
 
               <label for="productName">
