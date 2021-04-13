@@ -1,23 +1,5 @@
 
 
-function ItemRow(props) {
-
-    const item = props.item;
-  
-    return (
-        <tr>
-            {/* <td>{item.id}</td> */}
-            <td>{item.name}</td>
-            <td>{"$" + item.price}</td>
-  
-            <td>{item.category}</td>
-            <td>
-              <a href={item.image} target="_blank">View</a>
-            </td>
-        </tr>
-    );
-  }
-
 function ItemTable(props) {    
 
   const itemRows = props.items.map(item =>
@@ -39,6 +21,7 @@ function ItemTable(props) {
           </tbody>
       </table>
   );
+
 }
 
 class ItemAdd extends React.Component {
@@ -53,13 +36,13 @@ class ItemAdd extends React.Component {
       e.preventDefault();
       const form = document.forms.itemAdd;
       const item = {
-          name: form.name.value,
+          productName: form.productName.value,
           price: this.state.price,
           category: form.category.value, 
           image: form.image.value, 
       }
       this.props.createItem(item);
-      form.name.value = "";
+      form.productName.value = "";
       this.setState({price: ''});
       form.category.value = "";
       form.image.value = "";
@@ -87,9 +70,9 @@ class ItemAdd extends React.Component {
                 }} />
                 </label>
 
-              <label for="name">
+              <label for="productName">
                 Product Name
-                <input type="text" name="name" />
+                <input type="text" name="productName" />
               </label>
               
               <label for="image">
@@ -110,55 +93,20 @@ class ItemList extends React.Component {
       this.state = { items: [] };
       this.createItem = this.createItem.bind(this);
   }
-
   componentDidMount() {
       this.loadData();
   }
-
-  async loadData() {
-    const query = `query {
-        productList {
-            category name price image
-        }
-    }`;
-
-    const response = await fetch('/graphql', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify({ query })
-    });
-    const result = await response.json();
-    this.setState({ items: result.data.productList });
-    
+  loadData() {
+      setTimeout(() => {
+          this.setState({ items: initialItems });
+      }, 500);
   }
-
   createItem(item) {
-  
-    
-    // const query = `mutation {
-    //     productAdd(product: {
-    //         name: "${item.name},
-    //         category: "${item.category},
-    //         price: "${item.price},
-    //         image: "${item.image}, ) {
-    //             id
-    //         }
-    //     }`;
-
-    // const response = await fetch('/graphql', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json'},
-    //     body: JSON.stringify({ query })
-    // });
-    
-    // this.loadData();
-    
-    item.id = this.state.items.length + 1;
-    const newItemList = this.state.items.slice();
-    newItemList.push(item);
-    this.setState({ items: newItemList });
+      item.id = this.state.items.length + 1;
+      const newItemList = this.state.items.slice();
+      newItemList.push(item);
+      this.setState({ items: newItemList });
   }
-
   render() {
       return (
           <React.Fragment>
@@ -175,10 +123,26 @@ class ItemList extends React.Component {
   }
 }
 
+function ItemRow(props) {
+
+  const item = props.item;
+
+  return (
+      <tr>
+          {/* <td>{item.id}</td> */}
+          <td>{item.productName}</td>
+          <td>{"$" + item.price}</td>
+
+          <td>{item.category}</td>
+          <td>
+            <a href={item.image} target="_blank">View</a>
+          </td>
+      </tr>
+  );
+}
 
 class BorderWrap extends React.Component {
-  
-    render() {
+  render() {
       const borderedStyle = {border: "1px solid silver", padding: 6};
       return (
           <div style={borderedStyle}>
